@@ -1,7 +1,6 @@
 import sqlite3
 
-
-class MyDBCP:
+class student_repo:
     def __init__(self):
         self.conn = sqlite3.connect("test.db", isolation_level=None)
         self.c = self.conn.cursor()
@@ -22,4 +21,7 @@ class MyDBCP:
         self.c.execute(SQL)
         self.conn.commit()
 
-# good
+    def getAllUser(self):
+        SQL = f"SELECT * from users"
+        self.c.execute(SQL)
+        return self.c.fetchall()
